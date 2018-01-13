@@ -17,17 +17,15 @@ def check_temperature(warn, crit):
     sense = SenseHat()
     temp = sense.get_temperature()
     
-    #temp = 22
-    
     # Print temperature and message and then exit with the correct return code
     if temp < warn:
-        print ("OK - Temperature is " + str(temp))
+        print ("OK - Temperature is %s | temperature=%s;%s;%s;;" % (temp, temp, warn, crit))
         sys.exit(0)
     elif temp > warn and temp < crit:
-        print ("WARNING - Temperature is " + str(temp))
+        print ("WARNING - Temperature is %s | temperature=%s;%s;%s;;" % (temp, temp, warn, crit))
         sys.exit(1)
     elif temp >= crit:
-        print ("CRITICAL - Temperature is " + str(temp))
+        print ("CRITICAL - Temperature is %s | temperature=%s;%s;%s;;" % (temp, temp, warn, crit))
         sys.exit(2)
     else:
         print ("UNKNOWN - Something went wrong with " + sys.argv[0] + "!")
@@ -38,17 +36,15 @@ def check_humidity(warn, crit):
     sense = SenseHat()
     humidity = sense.get_humidity()
     
-    #humidity = 22
-    
-    # Print temperature and message and then exit with the correct return code
-    if temp < warn:
-        print ("OK - Humidity is %s %%rH" % humidity)
+    # Print humidity and message and then exit with the correct return code
+    if humidity < warn:
+        print ("OK - Humidity is %s | humidity=%s;%s;%s;;" % (humidity, humidity, warn, crit))
         sys.exit(0)
-    elif temp > warn and temp < crit:
-        print ("WARNING - Humidity is %s %%rH" % humidity)
+    elif humidity > warn and humidity < crit:
+        print ("WARNING - Humidity is %s | humidity=%s;%s;%s;;" % (humidity, humidity, warn, crit))
         sys.exit(1)
-    elif temp >= crit:
-        print ("CRITICAL - Humidity is %s %%rH" % humidity)
+    elif humidity >= crit:
+        print ("CRITICAL - Humidity is %s | humidity=%s;%s;%s;;" % (humidity, humidity, warn, crit))
         sys.exit(2)
     else:
         print ("UNKNOWN - Something went wrong with " + sys.argv[0] + "!")
